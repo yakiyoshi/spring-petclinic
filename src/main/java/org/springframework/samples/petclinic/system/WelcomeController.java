@@ -17,14 +17,22 @@
 package org.springframework.samples.petclinic.system;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 class WelcomeController {
 
+	@Value("${hostname}")
+	private String hostname;
+
 	@GetMapping("/")
-	public String welcome() {
-		return "welcome";
+	public ModelAndView welcome(ModelAndView mav) {
+		mav.setViewName("welcome");
+		mav.addObject("hostname", hostname);
+		return mav;
 	}
 
 }
