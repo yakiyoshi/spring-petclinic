@@ -1,5 +1,5 @@
 FROM quay.io/yakiyoshi/spring-petclinic:maven-3.5.4-java-1.8
-RUN git clone https://github.com/yakiyoshi/spring-petclinic.git
+RUN git clone -b hostname https://github.com/yakiyoshi/spring-petclinic.git
 WORKDIR /opt/maven/spring-petclinic
 RUN ./mvnw package
 
